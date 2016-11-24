@@ -3,6 +3,7 @@ var reload = require('reload');
 var app = express();
 var dataFile = require('./data/data.json');
 var io = require('socket.io')();
+var db = require('./model/db');
 
 app.set('port', process.env.PORT || 3000 );
 app.set('appData', dataFile);
@@ -16,6 +17,7 @@ app.use(express.static('app/public'));
 app.use(require('./routes/index'));
 app.use(require('./routes/speakers'));
 app.use(require('./routes/feedback'));
+app.use(require('./routes/meetups'));
 app.use(require('./routes/api'));
 app.use(require('./routes/chat'));
 
